@@ -1,0 +1,175 @@
+:root {
+    /*Primary*/
+    --moderate-violet: hsl(263, 55%, 52%);
+    --very-dark-grayish-blue: hsl(217, 19%, 35%);
+    --very-dark-blackish-blue: hsl(219, 29%, 14%);
+    /*Neutral*/
+    --light-gray: hsl(0, 0%, 81%);
+    --light-grayish-blue: hsl(210, 46%, 95%);
+}
+
+@font-face {
+    font-family: 'Barlow';
+    src: url(./fonts/Barlow/Barlow-Regular.ttf);
+}
+
+body {
+    display: grid;
+    min-height: 100svh;
+    width: 100svw;
+    margin: 0;
+    container: body / inline-size;
+    font-weight: 500;
+    font-family: 'Barlow';
+}
+
+main {
+    display: grid;
+    min-height: 100cqh;
+    width: 100cqw;
+    container: main / inline-size;
+    place-items: center;
+    background: var(--light-grayish-blue);
+    position: relative;
+}
+
+section[class="testimonial-grid"] {
+    display: grid;
+    grid-template-areas:
+        "card-1 card-1 card-1 card-1 card-1 card-1 card-2 card-2 card-2 card-5 card-5 card-5"
+        "card-3 card-3 card-3 card-4 card-4 card-4 card-4 card-4 card-4 card-5 card-5 card-5"; 
+    grid-template-rows: 50% 50%;
+    width: 80cqw;
+    height: 80cqh;
+    gap: 20px;
+    max-width: 1152px;
+    max-height: 720px;
+}
+
+section[class="testimonial-card"] {
+	box-sizing: border-box;
+	padding: 20px;
+	border-radius: 5px;
+	display: grid;
+	align-content: space-around;
+    box-shadow: 0px 0px 10px 0px var(--light-gray);
+}
+
+section[class="testimonial-card"]:nth-of-type(1) {
+    grid-area: card-1;
+    background: var(--moderate-violet);
+    position: relative;
+}
+section[class="testimonial-card"]:nth-of-type(1) svg{
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+}
+section[class="testimonial-card"]:nth-of-type(2) {
+    grid-area: card-2;
+    background: var(--very-dark-grayish-blue);
+}
+
+section[class="testimonial-card"]:nth-of-type(3) {
+    grid-area: card-3;
+    background: white;
+}
+
+section[class="testimonial-card"]:nth-of-type(4) {
+    grid-area: card-4;
+    background: var(--very-dark-blackish-blue);
+}
+
+section[class="testimonial-card"]:nth-of-type(5) {
+    grid-area: card-5;
+    background: white;
+    color:var(--very-dark-grayish-blue);
+}
+section[class="testimonial-card"]:nth-of-type(3) h3[class="author-name"],
+section[class="testimonial-card"]:nth-of-type(5)  h3[class="author-name"]{
+    color:var(--very-dark-grayish-blue);
+}
+section[class="testimonial-card"]:nth-of-type(3) h2,
+section[class="testimonial-card"]:nth-of-type(5)  h2{
+    color:var(--very-dark-grayish-blue);
+}
+
+section[class="testimonial-card"]:nth-of-type(3) blockquote,
+section[class="testimonial-card"]:nth-of-type(5)  blockquote{
+    color:var(--very-dark-grayish-blue);
+}
+section[class="testimonial-author"] {
+    display: grid;
+    grid-template-areas:
+        "avatar author-name"
+        "avatar author-title";
+    justify-content: start;
+    align-items: center;
+    column-gap: 10px;
+    z-index: 2;
+}
+
+section[class="avatar-container"] {
+    grid-area: avatar;
+}
+
+section[class="avatar-container"] img {
+    border-radius: 50%;
+}
+
+section[class="testimonial-author"] h3[class="author-name"] {
+    color: var(--light-grayish-blue);
+    grid-area: author-name;
+    margin: 0;
+}
+
+section[class="testimonial-author"] span[class="author-title"] {
+    grid-area: author-title;
+    color:var(--light-gray);
+}
+
+section[class="testimonial-card"] h2 {
+    color: var(--light-grayish-blue);
+    font-size: clamp(1.2rem,1.3rem,1.4rem);
+    font-weight: 600;
+    margin: 0;
+    z-index: 2;
+}
+
+section[class="testimonial-card"] blockquote {
+    color: var(--light-gray);
+    margin: 0;
+}
+div[class="attribution"]{
+    position: absolute;
+    bottom: 5px;
+    left:0;
+    right: 0;
+    margin:0 auto;
+}
+svg[id="svgs"]{
+    display: none;
+}
+@container (inline-size  < 1000px){
+    section[class="testimonial-grid"] {
+        display: grid;
+        grid-template-areas:
+            "card-1"
+            "card-2"
+            "card-3"
+            "card-4"
+            "card-5";
+        grid-template-rows: 1fr;
+        height: auto;
+        max-width: unset;
+        max-height: unset;
+        margin: 50px 0 50px 0;
+    }
+    section[class="testimonial-card"] {
+        gap: 20px;
+    }
+    section[class="testimonial-card"]:nth-of-type(1) svg {
+        right: -50px;
+    }
+}
